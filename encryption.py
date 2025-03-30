@@ -1,6 +1,12 @@
 import pyAesCrypt
-password = input('Введите пароль для шифрования файла: ')
+from getpass import getpass
+password = getpass(prompt='Введите пароль: ')
 
-pyAesCrypt.encryptFile('data.txt', 'data.txt.aes', password)
+infile = input('Введите имя файла для шифрования (например: data.txt) ')
 
-pyAesCrypt.decryptFile('data.txt.aes', 'dataout.txt', password)
+outfile = input('Введите имя зашифрованного файла с расширением .aes (например: data.txt.aes) ')
+
+pyAesCrypt.encryptFile(infile, outfile, password)
+
+outfile2 = input('Введите имя расшифрованного файла (например: dataout.txt) ')
+pyAesCrypt.decryptFile(outfile, outfile2, password)
